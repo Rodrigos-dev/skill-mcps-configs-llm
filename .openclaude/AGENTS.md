@@ -68,11 +68,11 @@ Se permanecer no MESMO projeto e MESMA sessão:
 
 ## REGRA CRÍTICA
 - NUNCA pule a mensagem de confirmação
-- NUNCA esqueça de listar as skills em uso
+- **SEMPRE** exibir bloco de skills ativas NO TOPO (primeira coisa)
 - A CADA PASSO: SEMPRE mostrar skills em uso
 - MUDOU PROJETO: recarregar contexto completo
 - **HOMEM-DAS-CAVERNAS**: Deve estar ATIVA em TODAS as respostas (modo direto)
-- **SEMPRE** exibir bloco de skills ativas no início de cada resposta
+- Formato: Skills → Resposta (sem exceção)
 
 ## Regras Importantes
 
