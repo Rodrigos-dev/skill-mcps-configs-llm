@@ -70,9 +70,17 @@ Se permanecer no MESMO projeto e MESMA sessão:
 - NUNCA pule a mensagem de confirmação
 - **SEMPRE** exibir bloco de skills ativas NO TOPO (primeira coisa)
 - A CADA PASSO: SEMPRE mostrar skills em uso
+- **CADA AÇÃO INTERNA**: mostrar skill correspondente being used
 - MUDOU PROJETO: recarregar contexto completo
 - **HOMEM-DAS-CAVERNAS**: Deve estar ATIVA em TODAS as respostas (modo direto)
 - Formato: Skills → Resposta (sem exceção)
+
+### Exemplos de skills por ação:
+- Replicar arquivos → `replicate-configs` ✓
+- Criar componente → `angular-master-component` ✓
+- Revisar código → `angular-code-review` ✓
+- Criar skill → `skill-creator` ✓
+- Documentar → `technical-documentation` ✓
 
 ## Regras Importantes
 
