@@ -1,0 +1,152 @@
+# ============================================
+# GITIGNORE - Skill MCPS Configs LLM
+# ============================================
+
+# ============================================
+# ARQUIVOS COM CHAVES DE API (NUNCA COMMITTAR!)
+# ============================================
+.config/stripe/
+.continue/config.yaml
+.openclaude/backups/
+.openclaude/projects/
+
+# ============================================
+# TEMPORÁRIOS E CACHE
+# ============================================
+*.tmp
+*.temp
+*.cache
+*.log
+*.jsonl
+*.lock
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# ============================================
+# SESSÕES E HISTÓRICO (dados locais)
+# ============================================
+sessions/
+history/
+history.jsonl
+projects/
+projects.json
+
+# ============================================
+# PLUGINS MARKETPLACES (muito grandes)
+# ============================================
+.openclaude/plugins/marketplaces/
+
+# ============================================
+# ARQUIVOS DE SISTEMA
+# ============================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================
+# IDE
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ============================================
+# GEMINI (arquivos temporários)
+# ============================================
+.gemini/tmp/
+.gemini/chats/
+.gemini/history/
+.gemini/trustedFolders.json
+.gemini/google_accounts.json
+.gemini/installation_id
+.gemini/projects.json
+.gemini/settings.json
+.gemini/state.json
+
+# ============================================
+# OPENCODE (arquivos temporários)
+# ============================================
+.opencode/sessions/
+.opencode/cache/
+.opencode/plugins/
+
+# ============================================
+# CONFIGURAÇÕES LOCAIS (específicas de cada máquina)
+# ============================================
+.continuerc.json
+.project_root
+.openclaude.json
+.openclaude/.gitignore
+.openclaude/.last-cleanup
+.openclaude/ide/
+.openclaude/settings.json
+
+# ============================================
+# CONTINUE (arquivos de dados)
+# ============================================
+.continue/.continueignore
+.continue/.continuerc.json
+.continue/config.ts
+.continue/dev_data/
+.continue/index/
+.continue/memory/
+.continue/sessions/
+.continue/types/
+
+# ============================================
+# CLAUDE (arquivos de dados)
+# ============================================
+.claude/.gitignore
+.claude/.last-cleanup
+.claude/backups/
+.claude/ide/
+.claude/settings.json
+.claude/projects/
+
+# ============================================
+# CONFIGURAÇÕES ESPECÍFICAS
+# ============================================
+.config/configstore/
+.config/jgit/
+.config/opencode/sessions/
+.config/opencode/config.json
+.config/opencode/opencode.json
+.config/opencode/opencode.jsonc
+
+# ============================================
+# NPM/NODE
+# ============================================
+node_modules/
+package-lock.json
+yarn.lock
+package.json
+
+# ============================================
+# PYTHON
+# ============================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# ============================================
+# LOGS DE APLICAÇÃO
+# ============================================
+logs.json
+*.log.*
+
+# ============================================
+# IMAGENS (manter apenas README)
+# ============================================
+*.jpeg
+*.jpg
+*.png
+*.gif
+*.mp3
+*.mp4
