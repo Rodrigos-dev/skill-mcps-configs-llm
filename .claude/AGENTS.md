@@ -82,6 +82,8 @@ Se permanecer no MESMO projeto e MESMA sessão:
 - Criar skill → `skill-creator` ✓
 - Documentar → `technical-documentation` ✓
 
+<!-- Teste de replicação: 2026-07-29 -->
+
 ## Regras Importantes
 
 - Os arquivos contêm regras de segurança e memória do projeto
