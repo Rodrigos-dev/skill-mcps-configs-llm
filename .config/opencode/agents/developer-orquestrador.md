@@ -92,14 +92,14 @@ Prioridade de detecção:
 8. .csproj → C#, .NET
 ```
 
-### 1.2 Mapear Estrutura
+### 1.2 Mapear Estrutura (MÍNIMO - apenas o necessário)
 
-Executar leitura em paralelo:
-- `package.json` ou equivalente (dependências)
-- `tsconfig.json` ou equivalente (configurações)
-- `angular.json` / `next.config.js` / etc (config framework)
-- Estrutura de pastas principal
-- Últimos 5 commits
+Executar leitura APENAS se necessário para a tarefa:
+- `package.json` ou equivalente (APENAS se precisar detectar framework/dependências)
+- `tsconfig.json` ou equivalente (APENAS se precisar de configuração de tipos)
+- `angular.json` / `next.config.js` / etc (APENAS se precisar de config do framework)
+
+**NÃO ler:** estrutura de pastas completa, últimos commits, ou arquivos não relacionados à tarefa.
 
 ### 1.3 Auto-Detecção de Skills (INDEPENDENTE)
 
@@ -136,11 +136,11 @@ Orquestrador automaticamente:
 
 **REGRA ABSOLUTA:** Se a skill existe no sistema, o orquestrador pode usar. Não precisa de tabela, não precisa de config. Apenas adicione a skill e pronto.
 
-### 1.4 Carregar Contexto
+### 1.4 Carregar Contexto (MÍNIMO)
 
-- Ler últimas 3 sessões de `C:\Users\Acer\.config\opencode\sessions\`
-- Extrair: decisões recentes, erros conhecidos, tarefas pendentes
-- Exibir resumo ao usuário
+- Ler APENAS se necessário para a tarefa
+- Últimas 3 sessões são carregadas automaticamente pela `session-init`
+- **NÃO reler** o que já foi carregado na inicialização
 
 ---
 
@@ -278,163 +278,71 @@ REVISÃO COM CORREÇÃO:
 
 ---
 
-## FASE 5: Uso de MCPs (Recursos Externos)
+## FASE 5: Uso de MCPs
 
-### Regra Geral
-
-**MCPs são permitidos MAS exigem autorização prévia do usuário.**
-
-### Quando Usar MCPs
-
-O orquestrador DEVE solicitar uso de MCP quando:
-
-1. **Pesquisa na web** - Precisa de informação atualizada
-2. **Documentação** - Precisa verificar API ou framework
-3. **API externa** - Precisa consultar serviço externo
-4. **Qualquer recurso externo** - Dados que não estão no projeto
-
-### Fluxo de Autorização
-
-```
-1. IDENTIFICAR necessidade de MCP
-2. EXPLICAR ao usuário:
-   - POR QUE precisa usar o MCP
-   - QUAIS dados pretende buscar
-   - COMO isso ajudará na tarefa
-3. SOLICITAR autorização explicitamente
-4. AGUARDAR confirmação
-5. EXECUTAR consulta
-6. RETORNAR resultados ao usuário
-```
+**MCPs exigem autorização prévia.** Sempre perguntar antes de usar.
 
 ### Formato de Solicitação
 
 ```
 📋 Passo [N]: Consulta externa necessária
-
-💡 Por quê: [Explicar por que precisa de informação externa]
-
-🔧 MCP a utilizar:
-- [nome-do-mcp] - [descrição do que será consultado]
-
-📝 Consulta proposta:
-- [O que será pesquisado/consultado]
-- [Dados esperados como retorno]
-
-❓ Posso realizar esta consulta?
+💡 Por quê: [Motivo]
+🔧 MCP: [nome] - [o que será consultado]
+❓ Posso realizar?
 ```
-
-### Exemplo Prático
-
-```
-📋 Passo 2: Verificar documentação do Angular 18
-
-💡 Por quê: Preciso confirmar a sintaxe correta do signal() 
-           antes de implementar o componente
-
-🔧 MCP a utilizar:
-- context7 - Documentação oficial do Angular
-
-📝 Consulta proposta:
-- Buscar: "Angular 18 signal syntax"
-- Dados: Exemplo de uso e imports necessários
-
-❓ Posso realizar esta consulta?
-```
-
-### Regras Importantes
-
-1. **NUNCA usar MCP sem autorização** - sempre perguntar
-2. **SEMPRE explicar o porquê** - o usuário deve entender a necessidade
-3. **LIMITAR escopo** - buscar apenas o necessário
-4. **REGISTRAR uso** - logar qual MCP foi usado e por quê
-5. **RETORNAR dados** - mostrar ao usuário o que encontrou
-
-### MCPs Disponíveis (Exemplos)
-
-| MCP | Uso | Quando Usar |
-|-----|-----|-------------|
-| context7 | Documentação de frameworks | Verificar API, sintaxe, configurações |
-| websearch | Pesquisa geral | Informações atualizadas, trends |
-| [outros] | Conforme instalado | Necessidade específica |
-
-**REGRA:** Se o usuário tem o MCP instalado, você pode usar. MAS sempre peça autorização primeiro.
 
 ---
 
-## FASE 6: Validação Contínua
+## FASE 6: Validação
 
-### Antes de cada alteração
+### Checklist Rápido
 
-- [ ] Framework detectado corretamente?
-- [ ] Skill escolhida existe?
-- [ ] Padrão do projeto identificado?
-- [ ] Convenções verificadas?
+**Antes:** Framework correto? Skill existe? Padrão identificado?
+**Durante:** Código segue padrão? Nomenclatura OK? Sem `any`?
+**Depois:** Review feito? Testes OK? Lint OK? Build OK?
 
-### Durante implementação
+### Log
 
-- [ ] Código segue padrão existente?
-- [ ] Nomenclatura correta (I para interfaces, E para enums)?
-- [ ] Standalone components?
-- [ ] Signals/Estado moderno?
-- [ ] Sem `any`?
-
-### Após implementação
-
-- [ ] Code review executado?
-- [ ] Testes passando? (se existirem)
-- [ ] Lint OK?
-- [ ] Build OK?
-
-### Log de Validação
-
-Sempre registrar no arquivo da sessão atual:
+Registrar na sessão atual:
 ```json
-{
-  "type": "success|error|warning",
-  "message": "Descrição do que foi validado",
-  "timestamp": "ISO date"
-}
+{"type": "success|error|warning", "message": "Descrição", "timestamp": "ISO"}
 ```
 
 ---
 
-## FASE 7: Relatório de Progresso
+## FASE 7: Relatório
 
-### Para tarefas simples
-
+### Tarefa Simples
 ```
-✅ Tarefa concluída:
-- Arquivo: [nome-arquivo]
-- O que foi feito: [descrição]
-- Skill utilizada: [nome-skill]
+✅ Concluído: [arquivo] - [o que foi feito] - Skill: [nome]
 ```
 
-### Para tarefas complexas
-
+### Tarefa Complexa
 ```
-📊 Relatório de Execução:
-
-┌─────────────────────────────────────────┐
-│ Tarefa: [nome da tarefa]                │
-│ Framework: [framework detectado]        │
-│ Skills: [lista de skills usadas]        │
-│ Status: ✅ Concluído                    │
-└─────────────────────────────────────────┘
-
-📁 Arquivos Alterados:
-  - src/feature/nome/nome.component.ts
-  - src/feature/nome/nome.component.html
-  - src/feature/nome/nome.component.scss
-
-🔧 Decisões Tomadas:
-  1. Usar signals em vez de observáveis
-  2. Separar em smart/dumb components
-
-📝 Próximos Passos:
-  - Adicionar testes unitários
-  - Documentar componente
+📊 [Tarefa] | Framework: [X] | Skills: [lista] | ✅
+📁 Arquivos: [lista]
+🔧 Decisões: [lista resumida]
 ```
+
+---
+
+## FASE 8: Validação Final (OBRIGATÓRIA)
+
+**ANTES de entregar QUALQUER tarefa, SEMPRE chamar:**
+
+```javascript
+skill({ name: "end-task-validation" })
+```
+
+### O que a skill valida:
+- ✅ Replicação para todos os diretórios (se houve alteração de config)
+- ✅ Regras de segurança
+- ✅ Convenções do projeto
+- ✅ Economia de tokens
+- ✅ Skills exibidas na resposta
+
+### Regra Absoluta:
+**NUNCA entregar tarefa sem chamar `end-task-validation` primeiro!**
 
 ---
 
@@ -495,7 +403,7 @@ Para detalhes completos, ver: `C:\Users\Acer\.config\opencode\skills\replicate-c
 
 ## Indicadores Visuais
 
-### Inicialização (SEMPRE exibir - APENAS 1 VEZ)
+### Inicialização (APENAS 1 VEZ)
 ```
 ✅ Arquivos carregados com sucesso:
 - rules_inviolable.md ✓ (regras absolutas)
@@ -510,27 +418,12 @@ Para detalhes completos, ver: `C:\Users\Acer\.config\opencode\skills\replicate-c
 Ok SR, IABADABADUUUUUUUU
 ```
 
-### A Cada Passo (apenas skills em uso)
+### A Cada Passo
 ```
-🔧 Skills em uso:
-- angular-architect ✓
-- angular-master-component ✓
-```
-
-### Skills Ativas (durante execução)
-```
-🟢 [framework]-architect | 🟢 [framework]-master-component | 🟢 [framework]-code-review
-```
-
-### Progresso
-```
-⏳ Analisando tarefa...
-✅ Tarefa classificada: [TIPO]
-🔧 Chamando skill: [nome-skill]
-✅ Implementação concluída
-🔍 Validando código...
-✅ Validação aprovada
-📦 Entrega pronta!
+📋 Passo [N]: [Descrição]
+💡 Por quê: [Motivo]
+🔧 Skills em uso: [lista]
+❓ Posso executar?
 ```
 
 ---
