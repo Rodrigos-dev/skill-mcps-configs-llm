@@ -14,6 +14,7 @@ Ao iniciar CADA sessão, exibir:
 - session-init ✓
 - session-manager ✓
 - homem-das-cavernas ✓
+- project-commands ✓
 
 Ok SR, IABADABADUUUUUUUU
 ```
@@ -59,6 +60,7 @@ Ok SR, IABADABADUUUUUUUU
 - `session-init` | `session-manager` | `homem-das-cavernas`
 - `onp-spec-driven` | `debug-investigator` | `migration-planner`
 - `feature-developer` | `performance-audit` | `prompt-engineer` | `system-architect`
+- `project-commands` | `end-task-validation`
 
 ## Inicialização da Sessão (OBRIGATÓRIO)
 
@@ -67,7 +69,8 @@ Ao iniciar CADA sessão:
 1. **PRIMEIRO**: `skill({ name: "session-init" })`
 2. **SEGUNDO**: `skill({ name: "session-manager" })`
 3. **TERCEIRO**: `skill({ name: "homem-das-cavernas" })`
-4. **QUARTO**: Exibir mensagem de confirmação acima
+4. **QUARTO**: `skill({ name: "project-commands" })`
+5. **QUINTO**: Exibir mensagem de confirmação acima
 
 **NÃO ler arquivos manualmente - usar sempre session-init!**
 
@@ -102,6 +105,17 @@ Ao iniciar CADA sessão:
 
 [Resto da resposta...]
 ```
+
+## Validação Final Obrigatória
+
+**ANTES de entregar QUALQUER tarefa, SEMPRE chamar:**
+
+```javascript
+skill({ name: "end-task-validation" })
+```
+
+### Regra Absoluta:
+**NUNCA entregar tarefa sem chamar `end-task-validation` primeiro!**
 
 ## Regras de Contexto
 
