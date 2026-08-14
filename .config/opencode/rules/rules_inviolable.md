@@ -119,3 +119,67 @@
 ```
 
 **Motivo:** Transparência total sobre quais skills estão ativas em cada momento.
+
+## 15. Validação Final Obrigatória
+
+**ANTES de entregar QUALQUER tarefa, SEMPRE chamar:**
+
+```javascript
+skill({ name: "end-task-validation" })
+```
+
+### O que a skill valida:
+- ✅ Replicação para todos os diretórios (se houve alteração de config)
+- ✅ Regras de segurança
+- ✅ Convenções do projeto
+- ✅ Economia de tokens
+- ✅ Skills exibidas na resposta
+
+### Regra Absoluta:
+**NUNCA entregar tarefa sem chamar `end-task-validation` primeiro!**
+
+## 16. Controle de Commits (OBRIGATÓRIO)
+
+### Regra Principal
+**NUNCA fazer commit AUTOMATICAMENTE.** SEMPRE solicitar autorização ao usuário.
+
+### Fluxo Obrigatório
+
+```
+1. Usuário solicita tarefa
+2. Agente executa tarefa (edições, criações, etc.)
+3. ANTES de commitar → PARAR e perguntar:
+   "Sr., posso realizar o commit? [Mensagem sugerida]"
+4. Aguardar resposta:
+   - "Sim" / "Pode" / "Autorizado" → Commitar
+   - "Não" / "Ainda não" / "Espere" → NÃO commitar
+```
+
+### Formato da Pergunta
+
+```
+📋 Commit Pendente
+
+Alterações prontas:
+- [arquivo1.ts] - [descrição]
+- [arquivo2.ts] - [descrição]
+
+Mensagem sugerida: `feat: [descrição curta]`
+
+❓ Sr., posso realizar o commit?
+```
+
+### Exceções (NÃO pedir autorização)
+
+- Commits de emergência (hotfix crítico) → Solicitar confirmação URGENTE
+- Commits solicitados explicitamente pelo usuário na mesma mensagem
+
+### Consequências de Violação
+
+Se o agente commitar sem autorização:
+1. Notificar imediatamente o usuário
+2. Reverter o commit (se possível)
+3. Registrar na sessão atual como erro crítico
+
+### Motivo
+Controle total sobre o histórico de versões. Cada commit deve ser uma decisão consciente do usuário.
